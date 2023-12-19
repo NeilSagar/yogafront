@@ -68,13 +68,7 @@ function Dashboard(){
               });
             }
           });
-        setUser((prev)=>{
-            return ({
-                ...prev,
-                batchnum:batchselected
-            });
-        });
-        setChangeLocal(!changeLocal);
+        BatchChange(batchselected);
     }
     function handleLogOut(){
         localStorage.removeItem("yogaUser");
@@ -114,20 +108,9 @@ function Dashboard(){
         <Card heading="Payment Status" value={user.payment?"Done":"Pending"} 
             units="" additional={user.payment?"":daysleft+"days left"}></Card>
            
-        {/* <h3>Batch: {user.batchnum}</h3> */}
-        
+
         </div>
         <div className="buttonsec">
-
-        {/* <p>Want to change batch?
-        <select id="batch" name="batch" value={user.batchnum} 
-        onChange={handleBatchChange}>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-        </select>
-        </p> */}
         <button className="button" onClick={handleBatchChange}>Change Batch</button>
         <button className="button" onClick={handleMakePayment}>Make Payment</button>
         </div>
